@@ -11,3 +11,13 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+import 'ckeditor4';
+
+CKEDITOR.replace( 'article_content');
+$("form").submit( function(e) {
+    var totalcontentlength = CKEDITOR.instances['article_content'].getData().replace(/<[^>]*>/gi, '').length;
+    if( !totalcontentlength ) {
+        alert( 'Veuillez entrer le contenu de l\'article' );
+        e.preventDefault();
+    }
+});

@@ -19,5 +19,10 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
+    },
+    "dependencies": {
+        "ckeditor4": "^4.19.1",
+        "google-fonts-plugin": "^5.0.2",
+        "jquery": "^3.6.0"
     }
 }

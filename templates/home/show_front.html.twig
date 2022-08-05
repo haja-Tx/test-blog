@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Article
+{% endblock %}
+{% block body %}
+	<main>
+		<a href="{{path('app_home')}}" class="btn btn-back">Retour</a>
+		<div class="row">
+			<div class="col-12">
+				<div class="card card-home">
+					<img class="card-img-top" src="{{asset('uploads/covers/' ~ article.cover)}}" alt="Cover image" style="height:400px;"/>
+					<div class="card-body">
+						<h4 class="card-title text-center">{{ article.title }}</h4>
+						<div class="content">
+							{{ article.content | raw }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Article{% endblock %}
+{% block title %}New Article
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Article</h1>
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item">
+				<a href="{{ path('app_article_index') }}">Admin</a>
+			</li>
+			<li class="breadcrumb-item active" aria-current="page">Nouveau</li>
+		</ol>
+	</nav>
+	<h3>Nouveau article</h3>
 
-    {{ include('article/_form.html.twig') }}
+	{{ include('article/_form.html.twig') }}
 
-    <a href="{{ path('app_article_index') }}">back to list</a>
 {% endblock %}

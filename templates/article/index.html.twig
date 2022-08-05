@@ -1,42 +1,48 @@
-{% extends 'base.html.twig' %} {% block title %}Article index{% endblock %} {%
-block body %}
-<h1>Article index</h1>
+{% extends 'base.html.twig' %}
+{% block title %}Article index
+{% endblock %}
+{% block body %}
+	<main>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-current="page">Admin</li>
+			</ol>
+		</nav>
+		<h3>Liste des articles</h3>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Slug</th>
-      <th>Content</th>
-      <th>Cover</th>
-      <th>DateCreated</th>
-      <th>actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for article in articles %}
-    <tr>
-      <td>{{ article.id }}</td>
-      <td>{{ article.title }}</td>
-      <td>{{ article.slug }}</td>
-      <td>{{ article.content }}</td>
-      <td>{{ article.cover }}</td>
-      <td>
-        {{ article.dateCreated ? article.dateCreated|date('Y-m-d H:i:s') : '' }}
-      </td>
-      <td>
-        <a href="{{ path('app_article_show', { id: article.id }) }}">show</a>
-        <a href="{{ path('app_article_edit', { id: article.id }) }}">edit</a>
-      </td>
-    </tr>
-    {% else %}
-    <tr>
-      <td colspan="7">no records found</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+		<a class="btn btn-back" href="{{ path('app_article_new') }}">Nouveau</a>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Date de Création</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for article in articles %}
+					<tr>
+						<td>{{ article.title }}</td>
+						<td>
+							{{ article.dateCreated ? article.dateCreated|date('Y-m-d H:i:s') : '' }}
+						</td>
+						<td class="action">
+							<a class="btn btn-action btn-sm" href="{{ path('app_article_show', { slug: article.slug }) }}">
+								<i class="fa fa-eye"></i>
+							</a>
+							<a class="btn btn-action btn-sm" href="{{ path('app_article_edit', { id: article.id }) }}">
+								<i class="fa fa-pencil"></i>
+							</a>
+							{{ include("article/_delete_form.html.twig") }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">Aucun résultat trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
 
-<a href="{{ path('app_article_new') }}">Create new</a>
+	</main>
 {% endblock %}

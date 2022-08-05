@@ -3,13 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Form\ArticleEditType;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
+/**
+ * @Route("/admin")
+ */
 class ArticleController extends AbstractController
 {
     /**
@@ -23,15 +29,17 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/admin/article/new", name="app_article_new", methods={"GET", "POST"})
+     * @Route("/new", name="app_article_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ArticleRepository $articleRepository): Response
+    public function new(Request $request, ArticleRepository $articleRepository, SluggerInterface $slugger): Response
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             $articleRepository->add($article, true);
 
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
@@ -44,7 +52,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/article/{id}", name="app_article_show", methods={"GET"})
+     * @Route("/article/{slug}", name="app_article_show", methods={"GET"})
      */
     public function show(Article $article): Response
     {
@@ -54,11 +62,11 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/admin/article/{id}/edit", name="app_article_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="app_article_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Article $article, ArticleRepository $articleRepository): Response
     {
-        $form = $this->createForm(ArticleType::class, $article);
+        $form = $this->createForm(ArticleEditType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -74,7 +82,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/admin/article/{id}", name="app_article_delete", methods={"POST"})
+     * @Route("/{id}", name="app_article_delete", methods={"POST"})
      */
     public function delete(Request $request, Article $article, ArticleRepository $articleRepository): Response
     {

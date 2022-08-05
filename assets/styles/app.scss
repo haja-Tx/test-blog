@@ -1,3 +1,79 @@
 body {
-    background-color: lightgray;
+    background-color: #E4E6EC;
 }
+
+@import "~bootstrap/scss/bootstrap";
+
+$orange : #DC5E44;
+$robotoBlack: 'Roboto Black';
+$robotoSlab: 'Roboto Slab';
+$robotoRegular: 'Roborot Regular';
+
+.navbar-text {
+    color: $orange;
+    font-family: $robotoSlab;
+}
+#footer{
+    height: 300px;
+    margin-top: 60px;
+    background-color: $orange;
+}
+
+h1, h2, h3, h4 {
+	font-family: $robotoBlack;
+    font-weight: bold;
+	color: $orange;
+ }
+
+ #content-title{
+    margin-top: 60px;
+    margin-bottom: 20px;
+ }
+
+ .card-home{
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 10px;
+ }
+ .card-home a{
+    text-decoration: none;
+ }
+ .card-title{
+    margin-bottom: 20px;
+    margin-top: 10px;
+ }
+.card-body{
+    min-height: 154px;
+}
+.card-img-top{
+    height: 200px;
+ }
+ .btn-back{
+    background-color: $orange;
+    color: #fff;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-family: $robotoBlack;
+    border-radius: 25px;
+ }
+ .btn-action{
+    background-color: $orange;
+    color: #fff;
+    font-family: $robotoBlack;
+    border-radius: 25px;
+ }
+ .action button{
+    position: relative;
+    top: -31px;
+    right: -71px;
+ }
+ .edit button{
+    position: relative;
+    left: 174px;
+    bottom:54px;
+ }
+ p{
+    font-family: $robotoRegular;
+ }
+
+ 

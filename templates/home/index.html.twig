@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Accueil
+{% endblock %}
+{% block body %}
+	<main>
+		<div class="row"><img src="{{asset('images/hero.png')}}" alt="hero"></div>
+		<div id="content-title" class="row">
+			<h1>Nos articles</h1>
+		</div>
+		<div class="row">
+			{% for article in articles %}
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="card card-home">
+						<a href="{{path('front_article_show',{'slug':article.slug})}}">
+							<img class="card-img-top" src="{{asset('uploads/covers/' ~ article.cover)}}" alt="Cover image">
+							<div class="card-body">
+								<h4 class="card-title">{{article.title}}</h4>
+							</div>
+						</div>
+					</a>
+				</div>
+				
+			{% else %}
+				<div class="col-12">
+					Aucun résultat trouvé pour le moment.
+				</div>
+			{% endfor %}
+		</div>
+	</main>
+{% endblock %}

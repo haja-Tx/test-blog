@@ -4,9 +4,13 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -23,7 +27,8 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $slug;
 
@@ -33,14 +38,27 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $cover;
 
     /**
+     * @Vich\UploadableField(mapping="articles", fileNameProperty="cover")
+     * @var File
+     */
+    private $coverFile;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
     private $dateCreated;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $dateUpdated;
 
     public function getId(): ?int
     {
@@ -64,13 +82,6 @@ class Article
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
     public function getContent(): ?string
     {
         return $this->content;
@@ -88,22 +99,40 @@ class Article
         return $this->cover;
     }
 
-    public function setCover(string $cover): self
+    public function setCover(?string $cover): self
     {
         $this->cover = $cover;
 
         return $this;
     }
 
-    public function getDateCreated(): ?\DateTimeInterface
+    public function setCoverFile(File $cover = null)
+    {
+        $this->coverFile = $cover;
+
+        if ($cover) {
+            $this->dateUpdated = new \DateTime('now');
+        }
+    }
+
+    public function getCoverFile()
+    {
+        return $this->coverFile;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateCreated()
     {
         return $this->dateCreated;
     }
 
-    public function setDateCreated(\DateTimeInterface $dateCreated): self
+    /**
+     * @return \DateTime
+     */
+    public function getDateUpdated()
     {
-        $this->dateCreated = $dateCreated;
-
-        return $this;
+        return $this->dateUpdated;
     }
 }

@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
 
-class ArticleType extends AbstractType
+class ArticleEditType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -21,11 +21,17 @@ class ArticleType extends AbstractType
                 'attr' => ['class' => 'form-control']
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Contenu'
+                'label' => 'Contenu',
+                'attr' => ['class' => 'ckeditor']
             ])
             ->add('coverFile', VichImageType::class, [
                 'label' => 'Image d’illustration',
                 'attr' => ['class' => 'form-control', 'accept' => 'image/*'],
+                'required' => false,
+                'allow_delete' => false,
+                'download_uri' => false,
+                'image_uri' => false,
+                'imagine_pattern' => 'product_photo_120x90',
                 'constraints' => [
                     new Image([
                         'maxSize' => '5M',

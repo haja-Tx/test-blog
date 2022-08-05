@@ -1589,6 +1589,13 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
+axios@^0.19.0:
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
+  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  dependencies:
+    follow-redirects "1.5.10"
+
 babel-loader@^8.2.5:
   version "8.2.5"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.5.tgz#d45f585e654d5a5d90f5350a779d7647c5ed512e"
@@ -1852,6 +1859,11 @@ chrome-trace-event@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/chrome-trace-event/-/chrome-trace-event-1.0.3.tgz#1015eced4741e15d06664a957dbbf50d041e26ac"
   integrity sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==
+
+ckeditor4@^4.19.1:
+  version "4.19.1"
+  resolved "https://registry.yarnpkg.com/ckeditor4/-/ckeditor4-4.19.1.tgz#73e786c4194e9ee6072a0fa267ac32f230d69174"
+  integrity sha512-eK/tilHSUpLc9mrD7Lvt07LJfJ13BBa4ftxJBxIX49sGMlWg5WaB81C+MRBZwnntcfpjVdyCLpZAptAHTDB65Q==
 
 clean-stack@^2.0.0:
   version "2.2.0"
@@ -2181,6 +2193,13 @@ debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.3:
   integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
   dependencies:
     ms "2.1.2"
+
+debug@=3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
+  dependencies:
+    ms "2.0.0"
 
 decamelize-keys@^1.1.0:
   version "1.1.0"
@@ -2575,7 +2594,7 @@ finalhandler@1.2.0:
     statuses "2.0.1"
     unpipe "~1.0.0"
 
-find-cache-dir@^3.3.1:
+find-cache-dir@^3.0.0, find-cache-dir@^3.3.1:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/find-cache-dir/-/find-cache-dir-3.3.2.tgz#b30c5b6eff0730731aea9bbd9dbecbd80256d64b"
   integrity sha512-wXZV5emFEjrridIgED11OoUKLxiYjAcqot/NJdAkOhlJ+vGzwhOAfcG5OX1jP+S0PcjEn8bdMJv+g2jwQ3Onig==
@@ -2598,6 +2617,13 @@ find-up@^4.0.0, find-up@^4.1.0:
   dependencies:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
+
+follow-redirects@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
+  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
+  dependencies:
+    debug "=3.1.0"
 
 follow-redirects@^1.0.0:
   version "1.15.1"
@@ -2792,6 +2818,15 @@ globule@^1.0.0:
     glob "~7.1.1"
     lodash "^4.17.21"
     minimatch "~3.0.2"
+
+google-fonts-plugin@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/google-fonts-plugin/-/google-fonts-plugin-5.0.2.tgz#fb5d9f1758513006606badb81583c088592895cd"
+  integrity sha512-KYpJ9RbjIEmd5Q45GeNnsUyz4ca2R9L8GWZjbdnTWxOV+59Q300q2cFIcDtGpdkEjrh8ARVK9nOLAYRR9eAU4w==
+  dependencies:
+    axios "^0.19.0"
+    find-cache-dir "^3.0.0"
+    pkg-up "^3.1.0"
 
 graceful-fs@^4.1.2, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
   version "4.2.10"
@@ -3203,6 +3238,11 @@ jest-worker@^27.4.5, jest-worker@^27.5.1:
     "@types/node" "*"
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
+
+jquery@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
 
 js-base64@^2.4.3:
   version "2.6.4"
